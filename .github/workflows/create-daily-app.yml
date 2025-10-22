@@ -1,0 +1,36 @@
+name: Create Daily Web App
+
+on:
+  schedule:
+    # Run daily at 00:00 UTC
+    - cron: '0 0 * * *'
+  workflow_dispatch: # Allow manual trigger
+
+permissions:
+  contents: write
+
+jobs:
+  create-app:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          
+      - name: Create daily web app
+        run: |
+          chmod +x scripts/create-app.sh
+          ./scripts/create-app.sh
+          
+      - name: Commit and push new app
+        run: |
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+          git add apps/
+          git diff --staged --quiet || git commit -m "Add web app for $(date +%Y-%m-%d)"
+          git push
