@@ -29,19 +29,41 @@ The project consists of:
 
 ## Scripture References
 
-All scripture quotations are from the English Standard Version (ESV).
+All scripture is from The King James Version of THE HOLY BIBLE.
 
 ### SEEK - Matthew 6:33
-"But seek first the kingdom of God and his righteousness, and all these things will be added to you."
+"But seek ye first the kingdom of God, and his righteousness; and all these things shall be added unto you."
 
 ### THINK - Philippians 4:8
-"Finally, brothers, whatever is true, whatever is honorable, whatever is just, whatever is pure, whatever is lovely, whatever is commendable, if there is any excellence, if there is anything worthy of praise, think about these things."
+"Finally, brethren, whatsoever things are true, whatsoever things are honest, whatsoever things are just, whatsoever things are pure, whatsoever things are lovely, whatsoever things are of good report; if there be any virtue, and if there be any praise, think on these things."
 
 ### LOVE - 1 Corinthians 13:4-8
-"Love is patient and kind; love does not envy or boast; it is not arrogant or rude. It does not insist on its own way; it is not irritable or resentful; it does not rejoice at wrongdoing, but rejoices with the truth. Love bears all things, believes all things, hopes all things, endures all things. Love never ends."
+"4 Charity suffereth long, and is kind; charity envieth not; charity vaunteth not itself, is not puffed up,
+
+5 Doth not behave itself unseemly, seeketh not her own, is not easily provoked, thinketh no evil;
+
+6 Rejoiceth not in iniquity, but rejoiceth in the truth;
+
+7 Beareth all things, believeth all things, hopeth all things, endureth all things.
+
+8 Charity never faileth: but whether there be prophecies, they shall fail; whether there be tongues, they shall cease; whether there be knowledge, it shall vanish away."
 
 ### PUT - Ephesians 6:11-18
-"Put on the whole armor of God, that you may be able to stand against the schemes of the devil. For we do not wrestle against flesh and blood, but against the rulers, against the authorities, against the cosmic powers over this present darkness, against the spiritual forces of evil in the heavenly places."
+"11 Put on the whole armour of God, that ye may be able to stand against the wiles of the devil.
+
+12 For we wrestle not against flesh and blood, but against principalities, against powers, against the rulers of the darkness of this world, against spiritual wickedness in high places.
+
+13 Wherefore take unto you the whole armour of God, that ye may be able to withstand in the evil day, and having done all, to stand.
+
+14 Stand therefore, having your loins girt about with truth, and having on the breastplate of righteousness;
+
+15 And your feet shod with the preparation of the gospel of peace;
+
+16 Above all, taking the shield of faith, wherewith ye shall be able to quench all the fiery darts of the wicked.
+
+17 And take the helmet of salvation, and the sword of the Spirit, which is the word of God:
+
+18 Praying always with all prayer and supplication in the Spirit, and watching thereunto with all perseverance and supplication for all saints;"
 
 ## Features
 
@@ -66,7 +88,19 @@ No build process required. Simply edit the files and refresh the browser.
 
 This project is open source and available for personal and ministry use.
 
+
+
+
+
+
+
 ---
+
+
+
+
+
+
 
 # seek
 
