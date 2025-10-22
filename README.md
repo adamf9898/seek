@@ -6,10 +6,10 @@ A spiritual framework for daily living, grounded in Biblical principles.
 
 This project presents four foundational principles for Christian living:
 
-- **SEEK** - Matthew 6:33: Prioritize your relationship with God
-- **THINK** - Philippians 4:8: Guard your mind with righteous thoughts
-- **LOVE** - 1 Corinthians 13:4-8: Express Christ-like love in relationships
-- **PUT** - Ephesians 6:11-18: Put on the spiritual armor of God
+- **SEEK** `Matthew 6:33` - `Prioritize your relationship with God`
+- **THINK** - `Philippians 4:8` - `Guard your mind with righteous thoughts`
+- **LOVE** - `1 Corinthians 13:4-8` - `Express Christ-like love in relationships`
+- **PUT** - `Ephesians 6:11-18` - `Put on the spiritual armor of God`
 
 ## Structure
 
@@ -99,7 +99,13 @@ This project is open source and available for personal and ministry use.
 
 
 
+---
 
+```
+More Info
+```
+
+---
 
 
 # seek
