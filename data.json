@@ -1,0 +1,62 @@
+{
+  "theme": {
+    "title": "SEEK | THINK | LOVE | PUT",
+    "subtitle": "A Spiritual Framework for Daily Living"
+  },
+  "sections": [
+    {
+      "id": "seek",
+      "title": "SEEK",
+      "reference": "Matthew 6:33",
+      "verse": "But seek first the kingdom of God and his righteousness, and all these things will be added to you.",
+      "description": "Prioritize your relationship with God above all else.",
+      "practices": [
+        "Daily prayer and meditation",
+        "Scripture reading",
+        "Seeking God's will in decisions",
+        "Pursuing righteousness"
+      ]
+    },
+    {
+      "id": "think",
+      "title": "THINK",
+      "reference": "Philippians 4:8",
+      "verse": "Finally, brothers, whatever is true, whatever is honorable, whatever is just, whatever is pure, whatever is lovely, whatever is commendable, if there is any excellence, if there is anything worthy of praise, think about these things.",
+      "description": "Guard your mind with thoughts that honor God.",
+      "practices": [
+        "Focus on truth and excellence",
+        "Reject negative and impure thoughts",
+        "Cultivate gratitude",
+        "Meditate on God's Word"
+      ]
+    },
+    {
+      "id": "love",
+      "title": "LOVE",
+      "reference": "1 Corinthians 13:4-8",
+      "verse": "Love is patient and kind; love does not envy or boast; it is not arrogant or rude. It does not insist on its own way; it is not irritable or resentful; it does not rejoice at wrongdoing, but rejoices with the truth. Love bears all things, believes all things, hopes all things, endures all things. Love never ends.",
+      "description": "Express Christ-like love in all relationships.",
+      "practices": [
+        "Practice patience and kindness",
+        "Serve others selflessly",
+        "Forgive freely",
+        "Love without conditions"
+      ]
+    },
+    {
+      "id": "put",
+      "title": "PUT",
+      "reference": "Ephesians 6:11-18",
+      "verse": "Put on the whole armor of God, that you may be able to stand against the schemes of the devil. For we do not wrestle against flesh and blood, but against the rulers, against the authorities, against the cosmic powers over this present darkness, against the spiritual forces of evil in the heavenly places.",
+      "description": "Put on spiritual armor and stand firm in faith.",
+      "practices": [
+        "Belt of truth",
+        "Breastplate of righteousness",
+        "Shoes of the gospel of peace",
+        "Shield of faith",
+        "Helmet of salvation",
+        "Sword of the Spirit"
+      ]
+    }
+  ]
+}
