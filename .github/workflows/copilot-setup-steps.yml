@@ -11,8 +11,11 @@ on:
       - .github/instructions/**
       - .github/prompts/**
       - .github/workflows/**
-      - src/**
-      -  
+      - .obsidian/** 
+      - apps/**
+      - data/** 
+      - scripts/**
+
   pull_request:
     paths:
       - .github/workflows/copilot-setup-steps.yml

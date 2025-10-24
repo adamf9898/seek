@@ -1,0 +1,375 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Conversation Starter: Seeking First</title>
+  <style>
+    :root{
+      --bg:#0f1724; --card:#0b1220; --accent:#7dd3fc; --muted:#94a3b8; --glass: rgba(255,255,255,0.03);
+      --success:#10b981; --danger:#ef4444; --font-sans:system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial;
+    }
+    html,body{height:100%;margin:0;font-family:var(--font-sans);background:linear-gradient(180deg,#071021 0%, #071629 100%);color:#e6eef6;}
+    .wrap{max-width:980px;margin:32px auto;padding:24px;display:grid;gap:16px;}
+    header{display:flex;align-items:center;gap:16px}
+    header h1{font-size:20px;margin:0}
+    header p{margin:0;color:var(--muted);font-size:13px}
+    .grid{display:grid;grid-template-columns:1fr 360px;gap:18px}
+    .card{background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));padding:16px;border-radius:10px;box-shadow:0 6px 20px rgba(2,6,23,0.6);border:1px solid rgba(255,255,255,0.03)}
+    label{display:block;font-size:13px;margin-bottom:6px;color:var(--muted)}
+    input[type="text"],textarea,select{width:100%;padding:10px;border-radius:8px;border:none;background:var(--glass);color:inherit;font-size:14px;resize:vertical;min-height:40px}
+    textarea{min-height:80px}
+    .row{display:flex;gap:8px;align-items:center}
+    button{background:linear-gradient(90deg,var(--accent),#60a5fa);border:none;color:#021025;padding:9px 12px;border-radius:8px;font-weight:700;cursor:pointer}
+    button.ghost{background:transparent;border:1px solid rgba(255,255,255,0.04);color:var(--accent);font-weight:600}
+    .muted{color:var(--muted);font-size:13px}
+    .section-title{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px}
+    .small{font-size:13px;color:var(--muted)}
+    .list{display:grid;gap:8px}
+    .pill{background:rgba(255,255,255,0.02);padding:8px;border-radius:8px;border:1px solid rgba(255,255,255,0.02);font-size:13px}
+    .timer{font-weight:800;color:var(--accent);font-size:20px}
+    footer{display:flex;justify-content:space-between;gap:12px;align-items:center}
+    .controls{display:flex;gap:8px}
+    .copied{color:var(--success);font-weight:700;font-size:13px}
+    @media (max-width:880px){
+      .grid{grid-template-columns:1fr; }
+      header{flex-direction:column;align-items:flex-start;gap:8px}
+    }
+  </style>
+</head>
+<body>
+  <main class="wrap" role="main">
+    <header>
+      <div>
+        <h1>Conversation Starter: Seeking First</h1>
+        <p class="muted">Interactive prompts based on Matthew 6:33, Philippians 4:8, 1 Corinthians 13, and Ephesians 6</p>
+      </div>
+      <div style="margin-left:auto" class="muted">Use for groups or personal reflection</div>
+    </header>
+
+    <div class="grid">
+      <section class="card" aria-labelledby="core-q">
+        <div id="core-q" class="section-title">
+          <strong>Core Questions</strong>
+          <span class="small">Matthew 6:33</span>
+        </div>
+
+        <div style="display:grid;gap:12px">
+          <div>
+            <label for="tangible">Tangible step to seek God's will today</label>
+            <input id="tangible" type="text" placeholder="e.g., 10-minute prayer before email; decline one meeting" />
+          </div>
+
+          <div>
+            <label for="story">Brief testimony of provision after obedience</label>
+            <textarea id="story" placeholder="Share a short example of 'then all these things were added'"></textarea>
+          </div>
+
+          <div>
+            <label for="thought">Thought-pattern to replace this week (Philippians 4:8)</label>
+            <select id="thought">
+              <option value="anxiety">Anxiety → Trust</option>
+              <option value="resentment">Resentment → Gratitude</option>
+              <option value="envy">Envy → Contentment</option>
+              <option value="self-crit">Self-criticism → Identity-in-Christ</option>
+              <option value="other">Other (write below)</option>
+            </select>
+            <textarea id="thought-custom" placeholder="If Other, write the praiseworthy truth you'll practice" style="display:none;margin-top:8px"></textarea>
+          </div>
+
+          <div>
+            <label for="love-attr">Love attribute most challenging (1 Corinthians 13)</label>
+            <select id="love-attr">
+              <option value="patient">Patient</option>
+              <option value="kind">Kind</option>
+              <option value="no-record">Keeping no record of wrongs</option>
+              <option value="protect">Protecting</option>
+              <option value="hoping">Hoping</option>
+            </select>
+            <textarea id="love-action" placeholder="Concrete challenge: e.g., send a brief nondefensive text; honor a boundary" style="margin-top:8px"></textarea>
+          </div>
+
+          <div>
+            <label for="armor">Armor piece most neglected (Ephesians 6)</label>
+            <select id="armor">
+              <option value="truth">Belt of truth</option>
+              <option value="righteousness">Breastplate of righteousness</option>
+              <option value="readiness">Gospel of peace (readiness)</option>
+              <option value="faith">Shield of faith</option>
+              <option value="salvation">Helmet of salvation</option>
+              <option value="word">Sword of the Spirit (Scripture)</option>
+              <option value="prayer">Prayer</option>
+            </select>
+            <input id="sword-verse" type="text" placeholder="Verse you wielded recently (e.g., Isaiah 41:10)" style="margin-top:8px" />
+          </div>
+
+          <div style="display:flex;gap:10px;align-items:center;justify-content:flex-end;margin-top:6px">
+            <button id="save">Save Response</button>
+            <button id="reset" class="ghost">Reset</button>
+          </div>
+        </div>
+      </section>
+
+      <aside class="card" aria-labelledby="actions">
+        <div id="actions" class="section-title">
+          <strong>Actions & Timers</strong>
+          <span class="small">Make it immediate</span>
+        </div>
+
+        <div class="list">
+          <div>
+            <label for="selected-action">Chosen action to do within the hour</label>
+            <input id="selected-action" type="text" placeholder="Name the single action you'll do in the next hour" />
+            <div class="row" style="margin-top:8px">
+              <button id="act-now">Start 1-hour timer</button>
+              <button id="copy" class="ghost">Copy action</button>
+            </div>
+            <div style="margin-top:8px" id="act-note" class="muted">Timer stopped</div>
+          </div>
+
+          <hr style="border:none;border-top:1px solid rgba(255,255,255,0.03)" />
+
+          <div>
+            <div style="display:flex;justify-content:space-between;align-items:center">
+              <div><strong>Share timer</strong><div class="small">60–90s share turns</div></div>
+              <div id="share-time" class="timer">00:00</div>
+            </div>
+            <div style="display:flex;gap:8px;margin-top:10px">
+              <button id="share-start">Start 90s</button>
+              <button id="share-stop" class="ghost">Stop</button>
+            </div>
+            <div class="muted" style="margin-top:8px">Keep turns short to encourage many voices</div>
+          </div>
+
+          <hr style="border:none;border-top:1px solid rgba(255,255,255,0.03)" />
+
+          <div>
+            <strong>Saved Snapshot</strong>
+            <div id="snapshot" class="pill muted" style="margin-top:8px">No saved responses yet</div>
+          </div>
+        </div>
+      </aside>
+    </div>
+
+    <footer class="card">
+      <div style="display:flex;align-items:center;gap:12px;">
+        <div style="min-width:48px">
+          <svg width="42" height="42" viewBox="0 0 24 24" fill="none" aria-hidden>
+            <path d="M12 2v20" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+            <path d="M5 12h14" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <div>
+          <div style="font-weight:700">Closing Invitation</div>
+          <div class="muted">Choose one principle and act on it in the next hour. Name it and go.</div>
+        </div>
+      </div>
+
+      <div style="display:flex;flex-direction:column;align-items:flex-end">
+        <div id="status" class="muted">Ready</div>
+        <div style="display:flex;gap:8px;margin-top:8px">
+          <button id="export" class="ghost">Copy Snapshot</button>
+          <button id="clear" class="ghost">Clear All</button>
+        </div>
+      </div>
+    </footer>
+  </main>
+
+  <script>
+    // Elements
+    const thought = document.getElementById('thought');
+    const thoughtCustom = document.getElementById('thought-custom');
+    const saveBtn = document.getElementById('save');
+    const resetBtn = document.getElementById('reset');
+    const snapshot = document.getElementById('snapshot');
+    const selectedAction = document.getElementById('selected-action');
+    const actNow = document.getElementById('act-now');
+    const actNote = document.getElementById('act-note');
+    const copyBtn = document.getElementById('copy');
+    const shareStart = document.getElementById('share-start');
+    const shareStop = document.getElementById('share-stop');
+    const shareTime = document.getElementById('share-time');
+    const status = document.getElementById('status');
+    const exportBtn = document.getElementById('export');
+    const clearBtn = document.getElementById('clear');
+
+    // Thought custom toggle
+    thought.addEventListener('change', () => {
+      thoughtCustom.style.display = thought.value === 'other' ? 'block' : 'none';
+    });
+
+    // Save snapshot
+    saveBtn.addEventListener('click', () => {
+      const tangible = document.getElementById('tangible').value.trim();
+      const story = document.getElementById('story').value.trim();
+      const thoughtVal = thought.value === 'other' ? (thoughtCustom.value.trim() || 'Other') : thought.options[thought.selectedIndex].text;
+      const loveAttr = document.getElementById('love-attr').value;
+      const loveAction = document.getElementById('love-action').value.trim();
+      const armor = document.getElementById('armor').value;
+      const swordVerse = document.getElementById('sword-verse').value.trim();
+
+      const data = {
+        tangible, story, thoughtVal, loveAttr, loveAction, armor, swordVerse,
+        time: new Date().toLocaleString()
+      };
+
+      // store in localStorage
+      try {
+        const stored = JSON.parse(localStorage.getItem('cs_snapshot')||'[]');
+        stored.unshift(data);
+        localStorage.setItem('cs_snapshot', JSON.stringify(stored.slice(0,10)));
+        snapshot.textContent = `${data.time} — ${data.tangible || 'No action named'}`;
+        status.textContent = 'Saved';
+        setTimeout(()=>status.textContent='Ready',1200);
+      } catch(e){
+        console.error(e);
+        status.textContent = 'Save failed';
+      }
+    });
+
+    resetBtn.addEventListener('click', () => {
+      if(!confirm('Reset the form to blank?')) return;
+      document.querySelectorAll('input[type="text"], textarea').forEach(i=>i.value='');
+      document.querySelectorAll('select').forEach(s=>s.selectedIndex=0);
+      thoughtCustom.style.display='none';
+      status.textContent='Form reset';
+      setTimeout(()=>status.textContent='Ready',1200);
+    });
+
+    // Copy snapshot summary
+    exportBtn.addEventListener('click', async () => {
+      const stored = JSON.parse(localStorage.getItem('cs_snapshot')||'[]');
+      if(!stored.length) {
+        status.textContent='No snapshot to copy';
+        setTimeout(()=>status.textContent='Ready',1200);
+        return;
+      }
+      const latest = stored[0];
+      const text = [
+        `Tangible step: ${latest.tangible || '(none)'}`,
+        `Testimony: ${latest.story || '(none)'}`,
+        `Thought swap: ${latest.thoughtVal}`,
+        `Love focus: ${latest.loveAttr} — ${latest.loveAction || '(challenge not set)'}`,
+        `Armor: ${latest.armor} — Verse: ${latest.swordVerse || '(none)'}`,
+        `Saved: ${latest.time}`
+      ].join('\\n');
+      try {
+        await navigator.clipboard.writeText(text);
+        status.textContent='Snapshot copied';
+        setTimeout(()=>status.textContent='Ready',1200);
+      } catch(e){
+        status.textContent='Copy failed';
+        setTimeout(()=>status.textContent='Ready',1200);
+      }
+    });
+
+    // Clear storage
+    clearBtn.addEventListener('click', () => {
+      if(!confirm('Clear saved snapshots?')) return;
+      localStorage.removeItem('cs_snapshot');
+      snapshot.textContent='No saved responses yet';
+      status.textContent='Cleared';
+      setTimeout(()=>status.textContent='Ready',1200);
+    });
+
+    // Copy action
+    copyBtn.addEventListener('click', async () => {
+      const text = selectedAction.value.trim();
+      if(!text){ status.textContent='No action to copy'; setTimeout(()=>status.textContent='Ready',1200); return; }
+      try {
+        await navigator.clipboard.writeText(text);
+        copyBtn.textContent='Copied';
+        setTimeout(()=>copyBtn.textContent='Copy action',1200);
+      } catch(e){
+        status.textContent='Copy failed';
+        setTimeout(()=>status.textContent='Ready',1200);
+      }
+    });
+
+    // 1-hour timer logic
+    let hourTimer = null;
+    actNow.addEventListener('click', () => {
+      if(hourTimer){
+        clearInterval(hourTimer);
+        hourTimer = null;
+        actNote.textContent='Timer stopped';
+        actNow.textContent='Start 1-hour timer';
+        status.textContent='Timer stopped';
+        return;
+      }
+      const text = selectedAction.value.trim();
+      if(!text){ status.textContent='Name an action first'; setTimeout(()=>status.textContent='Ready',1400); return; }
+      let remaining = 60 * 60; // seconds
+      actNow.textContent='Stop timer';
+      actNote.textContent=formatHMS(remaining) + ' remaining';
+      hourTimer = setInterval(()=>{
+        remaining--;
+        actNote.textContent=formatHMS(remaining) + ' remaining';
+        if(remaining<=0){
+          clearInterval(hourTimer);
+          hourTimer=null;
+          actNote.textContent='Time is up — act completed or reset';
+          actNow.textContent='Start 1-hour timer';
+          status.textContent='Hour complete';
+        }
+      },1000);
+      status.textContent='Timer started';
+    });
+
+    function formatHMS(s){
+      const h = Math.floor(s/3600).toString().padStart(2,'0');
+      const m = Math.floor((s%3600)/60).toString().padStart(2,'0');
+      const sec = (s%60).toString().padStart(2,'0');
+      return `${h}:${m}:${sec}`;
+    }
+
+    // Share timer 90s / stop
+    let shareInterval = null;
+    let shareRemaining = 0;
+    shareStart.addEventListener('click', () => {
+      if(shareInterval) return;
+      shareRemaining = 90; // start with 90s
+      shareTime.textContent = formatShare(shareRemaining);
+      shareInterval = setInterval(()=>{
+        shareRemaining--;
+        shareTime.textContent = formatShare(shareRemaining);
+        if(shareRemaining<=0){
+          clearInterval(shareInterval);
+          shareInterval=null;
+          shareTime.textContent='00:00';
+          status.textContent='Share complete';
+        }
+      },1000);
+      status.textContent='Share timer running';
+    });
+
+    shareStop.addEventListener('click', () => {
+      if(shareInterval) { clearInterval(shareInterval); shareInterval=null; shareTime.textContent='00:00'; status.textContent='Share stopped'; }
+      else { status.textContent='Share timer not running'; }
+      setTimeout(()=>status.textContent='Ready',1200);
+    });
+
+    function formatShare(s){
+      const m = Math.floor(s/60).toString().padStart(2,'0');
+      const sec = (s%60).toString().padStart(2,'0');
+      return `${m}:${sec}`;
+    }
+
+    // On load: hydrate snapshot preview
+    (function hydrate(){
+      const stored = JSON.parse(localStorage.getItem('cs_snapshot')||'[]');
+      if(stored.length) snapshot.textContent = `${stored[0].time} — ${stored[0].tangible || 'No action named'}`;
+    })();
+
+    // Accessibility small helpers: allow Enter to save on some fields
+    document.querySelectorAll('input').forEach(inp => {
+      inp.addEventListener('keydown', (e) => {
+        if(e.key === 'Enter' && e.ctrlKey){
+          saveBtn.click();
+        }
+      });
+    });
+
+  </script>
+</body>
+</html>

@@ -1,0 +1,48 @@
+{
+  "principles": [
+    {
+      "id": "seek",
+      "name": "SEEK",
+      "reference": "Matthew 6:33",
+      "verse": "But seek ye first the kingdom of God, and his righteousness; and all these things shall be added unto you.",
+      "apps": [
+        "Begin each day with prayer and Scripture",
+        "Prioritize God's priorities when planning the day",
+        "Choose people and projects that reflect kingdom values"
+      ]
+    },
+    {
+      "id": "think",
+      "name": "THINK",
+      "reference": "Philippians 4:8",
+      "verse": "Finally, brethren, whatsoever things are true, whatsoever things are honest, whatsoever things are just, whatsoever things are pure, whatsoever things are lovely, whatsoever things are of good report; if there be any virtue, and if there be any praise, think on these things.",
+      "apps": [
+        "Filter media and conversations through virtuous categories",
+        "Refocus wandering thoughts with short scripture memorization",
+        "Practice gratitude to rewire habitual thinking patterns"
+      ]
+    },
+    {
+      "id": "love",
+      "name": "LOVE",
+      "reference": "1 Corinthians 13:4-8",
+      "verse": "Charity suffereth long, and is kind; charity envieth not; charity vaunteth not itself, is not puffed up, Doth not behave itself unseemly, seeketh not her own, is not easily provoked, thinketh no evil; Rejoiceth not in iniquity, but rejoiceth in the truth; Beareth all things, believeth all things, hopeth all things, endureth all things. Charity never faileth.",
+      "apps": [
+        "Practice active listening and patient responses",
+        "Choose forgiveness over resentment in relationships",
+        "Serve others with humility and joy"
+      ]
+    },
+    {
+      "id": "put",
+      "name": "PUT",
+      "reference": "Ephesians 6:11-18",
+      "verse": "Put on the whole armour of God, that ye may be able to stand against the wiles of the devil. Praying always with all prayer and supplication in the Spirit, and watching thereunto with all perseverance and supplication for all saints.",
+      "apps": [
+        "Adopt daily spiritual disciplines: prayer, Word, community",
+        "Put on truth, righteousness, readiness, faith, salvation, Spirit",
+        "Pray for protection and intercede for others"
+      ]
+    }
+  ]
+}

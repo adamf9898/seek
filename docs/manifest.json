@@ -1,0 +1,37 @@
+[
+  {
+    "title": "Root README",
+    "source": "README.md",
+    "doc": "docs/wiki/root-README.md"
+  },
+  {
+    "title": "create-app.sh",
+    "source": "scripts/create-app.sh",
+    "doc": "docs/wiki/scripts-create-app-sh.md"
+  },
+  {
+    "title": "Daily App index.html (2025-10-22)",
+    "source": "apps/2025-10-22/index.html",
+    "doc": "docs/wiki/apps-2025-10-22-index-html.md"
+  },
+  {
+    "title": "Daily App style.css (2025-10-22)",
+    "source": "apps/2025-10-22/style.css",
+    "doc": "docs/wiki/apps-2025-10-22-style-css.md"
+  },
+  {
+    "title": "Daily App script.js (2025-10-22)",
+    "source": "apps/2025-10-22/script.js",
+    "doc": "docs/wiki/apps-2025-10-22-script-js.md"
+  },
+  {
+    "title": "Daily App README (2025-10-22)",
+    "source": "apps/2025-10-22/README.md",
+    "doc": "docs/wiki/apps-2025-10-22-README-md.md"
+  },
+  {
+    "title": "Copilot Instructions",
+    "source": ".github/copilot-instructions.md",
+    "doc": "docs/wiki/github-copilot-instructions-md.md"
+  }
+]

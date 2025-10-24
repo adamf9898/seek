@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Project Wiki</title>
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+  <header class="site-header">
+    <h1>Project Wiki</h1>
+    <p class="subtitle">Documentation for each file in this repository</p>
+  </header>
+
+  <main class="container">
+    <section class="controls">
+      <input id="search" type="search" placeholder="Search docs..." aria-label="Search docs" />
+    </section>
+
+    <section>
+      <ul id="doc-list" class="doc-list" aria-live="polite"></ul>
+      <div id="empty" class="empty hidden">No documents match your search.</div>
+    </section>
+
+    <section class="meta">
+      <h2>About</h2>
+      <p>
+        This wiki uses a JSON manifest to auto-generate the index. Each entry maps a source file
+        to its corresponding Markdown documentation under docs/wiki/.
+      </p>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>

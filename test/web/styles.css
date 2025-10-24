@@ -1,0 +1,85 @@
+:root{
+  --bg:#0f1724;
+  --card:#0b1220;
+  --accent:#7dd3fc;
+  --muted:#94a3b8;
+  --glass: rgba(255,255,255,0.03);
+  --radius:12px;
+  --max-width:980px;
+  --gap:18px;
+  font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+  color-scheme: dark;
+}
+
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{height:100%}
+body{
+  background: radial-gradient(1200px 400px at 10% 10%, rgba(45,55,72,0.15), transparent),
+              linear-gradient(180deg,#071023 0%, var(--bg) 60%);
+  color:#e6eef6;
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+  padding:28px;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:20px;
+}
+
+.container{width:100%;max-width:var(--max-width)}
+
+.hero{
+  text-align:center;
+  margin-bottom:6px;
+}
+.title{
+  font-size:clamp(20px,4.5vw,36px);
+  letter-spacing:2px;
+  color:var(--accent);
+  margin-bottom:6px;
+}
+.tagline{color:var(--muted);font-size:0.95rem}
+
+.intro{margin:16px 0;color:var(--muted)}
+
+.grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+  gap:var(--gap);
+  margin-top:6px;
+}
+
+.card{
+  background:linear-gradient(180deg, rgba(255,255,255,0.02), var(--glass));
+  border:1px solid rgba(255,255,255,0.04);
+  padding:14px;
+  border-radius:var(--radius);
+  box-shadow:0 6px 18px rgba(2,6,23,0.6);
+  transition:transform .18s ease, box-shadow .18s ease;
+  display:flex;
+  flex-direction:column;
+  gap:8px;
+  min-height:120px;
+}
+.card:focus{outline:2px solid rgba(125,211,252,0.16);transform:translateY(-6px)}
+.card-head{display:flex;justify-content:space-between;align-items:center;gap:10px}
+.card-title{font-size:1.05rem;color:#dbeafe}
+.toggle{
+  background:transparent;border:1px solid rgba(255,255,255,0.06);color:var(--accent);
+  width:36px;height:36px;border-radius:10px;font-weight:700;cursor:pointer;
+  display:flex;align-items:center;justify-content:center;
+}
+.card-body{padding-top:6px;border-top:1px dashed rgba(255,255,255,0.03)}
+.reference{font-weight:600;color:var(--muted);font-size:0.9rem;margin-bottom:6px}
+.verse{color:#f8fafc;font-style:italic;font-size:0.95rem;margin-bottom:8px}
+.application h4{margin-bottom:6px;color:var(--muted)}
+.apps-list{list-style:disc inside;margin-left:6px;color:#cfe8ff}
+
+.footer{color:var(--muted);font-size:0.85rem;margin-top:10px;text-align:center;width:100%}
+
+/* Responsive tweaks */
+@media (max-width:520px){
+  body{padding:16px}
+  .card{padding:12px}
+  .toggle{width:34px;height:34px}
+}

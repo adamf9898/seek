@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>SEEK | THINK | LOVE | PUT</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="hero">
+    <h1 class="title">SEEK | THINK | LOVE | PUT</h1>
+    <p class="tagline">A spiritual framework for daily living, grounded in Biblical principles.</p>
+  </header>
+
+  <main class="container" id="app">
+    <section class="intro">
+      <h2>Overview</h2>
+      <p>Four foundational principles for Christian living. Click any tile to expand scripture and practical applications.</p>
+    </section>
+
+    <section class="grid" id="principles">
+      <!-- Principle cards injected by script.js -->
+    </section>
+
+    <section class="scripture-note">
+      <h3>Scripture Notes</h3>
+      <p>All scripture is from The King James Version of THE HOLY BIBLE.</p>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <small>Open source for personal and ministry use.</small>
+  </footer>
+
+  <template id="card-template">
+    <article class="card" tabindex="0" role="button" aria-expanded="false">
+      <header class="card-head">
+        <h3 class="card-title"></h3>
+        <button class="toggle" aria-label="Expand">+</button>
+      </header>
+      <div class="card-body" hidden>
+        <p class="reference"></p>
+        <blockquote class="verse"></blockquote>
+        <div class="application">
+          <h4>Practical Application</h4>
+          <ul class="apps-list"></ul>
+        </div>
+      </div>
+    </article>
+  </template>
+
+  <script src="script.js" type="module"></script>
+</body>
+</html>

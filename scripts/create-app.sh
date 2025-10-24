@@ -24,15 +24,15 @@ cat > "$APP_DIR/index.html" << 'EOF'
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Web App - DATE_PLACEHOLDER</title>
+    <title>seek - DATE_PLACEHOLDER</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <div class="container">
-        <h1>Welcome to Today's Web App!</h1>
-        <p class="date">Created on: DATE_PLACEHOLDER</p>
+        <h1>seek</h1>
+        <p class="date">DATE_PLACEHOLDER</p>
         <div class="content">
-            <h2>Daily Web Application</h2>
+            <h2></h2>
             <p>This is a simple web application created automatically on DATE_PLACEHOLDER.</p>
             <div class="features">
                 <h3>Features:</h3>
@@ -160,7 +160,7 @@ button:active {
     .container {
         padding: 20px;
     }
-    
+
     h1 {
         font-size: 2em;
     }
@@ -172,7 +172,7 @@ cat > "$APP_DIR/script.js" << 'EOF'
 document.addEventListener('DOMContentLoaded', function() {
     const button = document.getElementById('actionBtn');
     const message = document.getElementById('message');
-    
+
     const messages = [
         '🎉 Great job!',
         '✨ You clicked it!',
@@ -183,11 +183,11 @@ document.addEventListener('DOMContentLoaded', function() {
         '💪 Nice work!',
         '🔥 On fire!'
     ];
-    
+
     button.addEventListener('click', function() {
         const randomMessage = messages[Math.floor(Math.random() * messages.length)];
         message.textContent = randomMessage;
-        
+
         // Add a little animation
         message.style.opacity = '0';
         setTimeout(() => {

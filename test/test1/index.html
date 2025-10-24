@@ -1,0 +1,410 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Relate WebGen Demo</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <style>
+    :root {
+      --bg: #0b1220;
+      --panel: #111a2e;
+      --muted: #9aa4b2;
+      --text: #e6edf6;
+      --accent: #3b82f6;
+      --accent-2: #7c3aed;
+      --ring: color-mix(in oklch, var(--accent), white 15%);
+      --card: #0f1729;
+      --border: #1e2a44;
+      --ok: #16a34a;
+      --warn: #eab308;
+      --danger: #ef4444;
+    }
+    * { box-sizing: border-box; }
+    html, body { height: 100%; }
+    body {
+      margin: 0; background: var(--bg); color: var(--text); font: 14px/1.5 system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, "Noto Sans", "Helvetica Neue", Arial, "Apple Color Emoji", "Segoe UI Emoji";
+    }
+    .app {
+      max-width: 1100px; margin: 0 auto; padding: 24px;
+    }
+    header.top {
+      display: flex; gap: 12px; align-items: center; justify-content: space-between; margin-bottom: 16px;
+    }
+    .brand { font-weight: 700; letter-spacing: 0.2px; }
+    nav.tabs { display: flex; gap: 6px; flex-wrap: wrap; }
+    nav.tabs button {
+      background: transparent; border: 1px solid var(--border);
+      color: var(--text); padding: 8px 12px; border-radius: 8px; cursor: pointer;
+    }
+    nav.tabs button.active { background: var(--accent); border-color: var(--accent); color: white; }
+    .panel {
+      background: var(--panel); border: 1px solid var(--border); border-radius: 12px; padding: 16px; margin: 14px 0;
+    }
+    h2.section-title { font-size: 16px; margin: 0 0 12px; color: var(--muted); }
+    .row { display: flex; gap: 12px; flex-wrap: wrap; }
+    .col { flex: 1 1 260px; min-width: 240px; }
+    .text { color: var(--text); }
+    .muted { color: var(--muted); }
+    .input, .select, .button {
+      width: 100%; padding: 10px 12px; border-radius: 8px; border: 1px solid var(--border); background: var(--card); color: var(--text);
+    }
+    .button {
+      background: var(--accent); border-color: var(--accent); color: white; cursor: pointer; font-weight: 600; text-align: center;
+    }
+    .button.secondary { background: transparent; color: var(--text); border-color: var(--border); }
+    .list { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 10px; }
+    .card {
+      background: var(--card); border: 1px solid var(--border); border-radius: 10px; padding: 12px;
+    }
+    .gallery { display: grid; grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 10px; }
+    .gallery img { width: 100%; height: 120px; object-fit: cover; border-radius: 10px; border: 1px solid var(--border); }
+    .toast {
+      position: fixed; right: 16px; bottom: 16px; background: #0a0f1a; color: var(--text);
+      border: 1px solid var(--ring); padding: 10px 12px; border-radius: 10px; box-shadow: 0 10px 30px rgba(0,0,0,0.35);
+      animation: pop 0.15s ease-out;
+    }
+    @keyframes pop { from { transform: translateY(4px); opacity: 0 } to { transform: translateY(0); opacity: 1 } }
+    .bar { display:flex; gap:8px; align-items:center; flex-wrap:wrap; }
+    .chip { padding: 6px 10px; border:1px solid var(--border); border-radius: 999px; color: var(--muted); }
+    .foot { display:flex; justify-content: space-between; align-items:center; gap:12px; margin-top: 8px; color: var(--muted); font-size: 12px; }
+    .sr { position: absolute; clip: rect(1px,1px,1px,1px); width:1px; height:1px; overflow:hidden; }
+    a { color: color-mix(in oklch, var(--accent), white 10%); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+  </style>
+</head>
+<body>
+  <div id="app" class="app"></div>
+
+  <!-- Demo Spec -->
+  <script id="spec" type="application/json">
+  {
+    "title": "Relate WebGen",
+    "theme": { "accent": "#3b82f6" },
+    "state": {
+      "name": "World",
+      "category": "All",
+      "images": [
+        { "src": "https://picsum.photos/seed/alpha/400/300", "alt": "Alpha" },
+        { "src": "https://picsum.photos/seed/bravo/400/300", "alt": "Bravo" },
+        { "src": "https://picsum.photos/seed/charlie/400/300", "alt": "Charlie" }
+      ],
+      "items": [
+        { "title": "Alpha", "category": "A" },
+        { "title": "Beta", "category": "B" },
+        { "title": "Gamma", "category": "A" },
+        { "title": "Delta", "category": "C" },
+        { "title": "Epsilon", "category": "B" }
+      ]
+    },
+    "pages": [
+      {
+        "id": "home",
+        "label": "Home",
+        "sections": [
+          {
+            "title": "Welcome",
+            "components": [
+              { "type": "text", "value": "Hello, ${state.name}!", "variant": "title" },
+              { "type": "text", "value": "Try changing your name and filtering items. Data and UI relate via state-binding.", "variant": "muted" },
+              {
+                "type": "group",
+                "layout": "row",
+                "components": [
+                  { "type": "input", "bind": "state.name", "placeholder": "Your name" },
+                  {
+                    "type": "select",
+                    "bind": "state.category",
+                    "options": [
+                      { "label": "All", "value": "All" },
+                      { "label": "A", "value": "A" },
+                      { "label": "B", "value": "B" },
+                      { "label": "C", "value": "C" }
+                    ]
+                  },
+                  {
+                    "type": "button",
+                    "label": "Toast",
+                    "onClick": { "type": "toast", "message": "Hi ${state.name} 👋" }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "title": "Items",
+            "components": [
+              {
+                "type": "list",
+                "itemsExpr": "state.items.filter(i => state.category === 'All' || i.category === state.category)",
+                "render": {
+                  "titleExpr": "item.title",
+                  "subtitleExpr": "`Category ${item.category}`"
+                }
+              },
+              {
+                "type": "button",
+                "label": "Go to Gallery",
+                "onClick": { "type": "navigate", "pageId": "gallery" }
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "gallery",
+        "label": "Gallery",
+        "sections": [
+          {
+            "title": "Pictures",
+            "components": [
+              { "type": "text", "value": "Welcome, ${state.name}. Enjoy the gallery.", "variant": "muted" },
+              { "type": "gallery", "images": { "bind": "state.images" } },
+              { "type": "button", "label": "Back Home", "onClick": { "type": "navigate", "pageId": "home" }, "variant": "secondary" }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+  </script>
+
+  <script>
+    // --- Utilities ---
+    const $ = (sel, root = document) => root.querySelector(sel);
+    const el = (tag, props = {}, ...children) => {
+      const node = document.createElement(tag);
+      Object.entries(props).forEach(([k, v]) => {
+        if (v == null) return;
+        if (k === "class") node.className = v;
+        else if (k === "style" && typeof v === "object") Object.assign(node.style, v);
+        else if (k.startsWith("on") && typeof v === "function") node.addEventListener(k.slice(2).toLowerCase(), v);
+        else if (k === "text") node.textContent = v;
+        else node.setAttribute(k, v);
+      });
+      for (const child of children.flat()) {
+        if (child == null) continue;
+        node.appendChild(typeof child === "string" ? document.createTextNode(child) : child);
+      }
+      return node;
+    };
+    const getByPath = (obj, path) => {
+      if (!path) return undefined;
+      return path.split(".").reduce((o, k) => (o ? o[k] : undefined), obj);
+    };
+    const setByPath = (obj, path, value) => {
+      const parts = path.split(".");
+      const last = parts.pop();
+      let cur = obj;
+      for (const p of parts) {
+        if (!(p in cur) || typeof cur[p] !== "object") cur[p] = {};
+        cur = cur[p];
+      }
+      cur[last] = value;
+    };
+    const evalInCtx = (expr, ctx) => {
+      try {
+        return Function(...Object.keys(ctx), "return (" + expr + ")").apply(null, Object.values(ctx));
+      } catch (e) {
+        console.warn("Eval error:", e, "expr:", expr, "ctx:", ctx);
+        return undefined;
+      }
+    };
+    const template = (str, ctx) => {
+      if (typeof str !== "string") return str;
+      return str.replace(/\$\{([^}]+)\}/g, (_, code) => {
+        const out = evalInCtx(code, ctx);
+        return out == null ? "" : String(out);
+      });
+    };
+    const isBinding = (v) => v && typeof v === "object" && typeof v.bind === "string";
+
+    // --- App core ---
+    const rawSpec = JSON.parse(document.getElementById("spec").textContent);
+    const state = structuredClone(rawSpec.state || {});
+    const app = document.getElementById("app");
+    document.title = rawSpec.title || document.title;
+    if (rawSpec.theme?.accent) {
+      document.documentElement.style.setProperty("--accent", rawSpec.theme.accent);
+      document.documentElement.style.setProperty("--ring", "color-mix(in oklch, " + rawSpec.theme.accent + ", white 15%)");
+    }
+    const runtime = { state, currentPage: (rawSpec.pages?.[0]?.id) || "main" };
+
+    function toast(msg, timeout = 2000) {
+      const t = el("div", { class: "toast" }, msg);
+      document.body.appendChild(t);
+      setTimeout(() => t.remove(), timeout);
+    }
+
+    // --- Actions ---
+    const Actions = {
+      toast: ({ message }) => toast(template(message, { state, ctx: runtime })),
+      navigate: ({ pageId }) => { runtime.currentPage = pageId; render(); },
+      setState: ({ path, value, valueExpr }) => {
+        const v = valueExpr != null ? evalInCtx(valueExpr, { state, ctx: runtime }) : value;
+        setByPath(runtime, path.startsWith("state.") ? path : "state." + path, v);
+        render();
+      },
+      fetch: async ({ url, into }) => {
+        try {
+          const res = await fetch(template(url, { state }));
+          const data = await res.json();
+          setByPath(runtime, into, data);
+          render();
+        } catch (e) {
+          toast("Fetch failed", 1800);
+          console.error(e);
+        }
+      }
+    };
+
+    // --- Components ---
+    function cmpText(c) {
+      const variant = c.variant === "muted" ? "muted" : "text";
+      const text = template(c.value ?? "", { state, ctx: runtime });
+      return el("div", { class: variant }, text);
+    }
+
+    function cmpInput(c) {
+      const path = c.bind || (isBinding(c.value) ? c.value.bind : null);
+      const val = path ? getByPath(runtime, path) : (c.value ?? "");
+      const input = el("input", {
+        class: "input",
+        placeholder: c.placeholder || "",
+        value: val ?? ""
+      });
+      input.addEventListener("input", () => {
+        if (path) setByPath(runtime, path, input.value);
+        render();
+      });
+      return input;
+    }
+
+    function cmpSelect(c) {
+      const path = c.bind;
+      const current = path ? getByPath(runtime, path) : undefined;
+      const opts = isBinding(c.options) ? (getByPath(runtime, c.options.bind) || []) : (c.options || []);
+      const sel = el("select", { class: "select" },
+        ...opts.map(o => {
+          const label = isBinding(o.label) ? getByPath(runtime, o.label.bind) : o.label;
+          const value = isBinding(o.value) ? getByPath(runtime, o.value.bind) : o.value;
+          const opt = el("option", { value: value }, label ?? value);
+          if (value === current) opt.selected = true;
+          return opt;
+        })
+      );
+      sel.addEventListener("change", () => {
+        if (path) setByPath(runtime, path, sel.value);
+        render();
+      });
+      return sel;
+    }
+
+    function cmpButton(c) {
+      const cls = "button" + (c.variant === "secondary" ? " secondary" : "");
+      const btn = el("button", { class: cls }, c.label || "Button");
+      if (c.onClick?.type && Actions[c.onClick.type]) {
+        btn.addEventListener("click", () => Actions[c.onClick.type](c.onClick));
+      }
+      return btn;
+    }
+
+    function cmpList(c) {
+      const items = c.itemsExpr
+        ? (evalInCtx(c.itemsExpr, { state, ctx: runtime }) || [])
+        : (isBinding(c.items) ? (getByPath(runtime, c.items.bind) || []) : (c.items || []));
+      const cells = items.map((item) => {
+        const title = c.render?.titleExpr ? evalInCtx(c.render.titleExpr, { state, item }) : (item.title ?? String(item));
+        const subtitle = c.render?.subtitleExpr ? evalInCtx(c.render.subtitleExpr, { state, item }) : null;
+        return el("div", { class: "card" },
+          el("div", { class: "bar" }, el("span", { class: "chip" }, "Item"), el("strong", {}, title)),
+          subtitle ? el("div", { class: "muted" }, subtitle) : null
+        );
+      });
+      return el("div", { class: "list" }, cells);
+    }
+
+    function cmpGallery(c) {
+      const images = isBinding(c.images) ? (getByPath(runtime, c.images.bind) || []) : (c.images || []);
+      return el("div", { class: "gallery" },
+        images.map(img => el("img", { src: img.src, alt: img.alt || "" }))
+      );
+    }
+
+    function cmpGroup(c) {
+      const layout = c.layout === "row" ? "row" : "col";
+      const kids = (c.components || []).map(materializeComponent).filter(Boolean);
+      return el("div", { class: layout }, kids.map(k => el("div", { class: "col" }, k)));
+    }
+
+    function materializeComponent(c) {
+      if (!c || typeof c !== "object") return null;
+      // Conditionals
+      if (c.if) {
+        const ok = !!evalInCtx(c.if, { state, ctx: runtime });
+        if (!ok) return null;
+      }
+      const map = {
+        text: cmpText, input: cmpInput, select: cmpSelect, button: cmpButton,
+        list: cmpList, gallery: cmpGallery, group: cmpGroup
+      };
+      const fn = map[c.type];
+      if (!fn) return el("div", { class: "muted" }, "Unknown component: " + c.type);
+      return fn(c);
+    }
+
+    function renderPage(page) {
+      const sections = page.sections || [];
+      const nav = el("nav", { class: "tabs" },
+        ...(rawSpec.pages || []).map(p => {
+          const b = el("button", {
+            class: "tab " + (p.id === runtime.currentPage ? "active" : "")
+          }, p.label || p.id);
+          b.addEventListener("click", () => { runtime.currentPage = p.id; render(); });
+          return b;
+        })
+      );
+      const header = el("header", { class: "top" },
+        el("div", { class: "brand" }, rawSpec.title || "App"),
+        nav
+      );
+
+      const content = sections.map(sec =>
+        el("section", { class: "panel" },
+          sec.title ? el("h2", { class: "section-title" }, sec.title) : null,
+          ...(sec.components || []).map(materializeComponent).filter(Boolean)
+        )
+      );
+
+      const foot = el("div", { class: "foot" },
+        el("div", {}, "State is reactive. UI updates as values relate."),
+        el("div", {}, el("a", { href: "#", onClick: (e) => { e.preventDefault(); toast('Demo footer'); } }, "Footer action"))
+      );
+
+      return el("div", {}, header, ...content, foot);
+    }
+
+    function renderSingleSpec(spec) {
+      const sec = spec.sections || [];
+      return el("div", {},
+        ...(sec.map(s =>
+          el("section", { class: "panel" },
+            s.title ? el("h2", { class: "section-title" }, s.title) : null,
+            ...(s.components || []).map(materializeComponent).filter(Boolean)
+          )
+        ))
+      );
+    }
+
+    function render() {
+      app.innerHTML = "";
+      const page = (rawSpec.pages || []).find(p => p.id === runtime.currentPage);
+      const node = page ? renderPage(page) : renderSingleSpec(rawSpec);
+      app.appendChild(node);
+    }
+
+    render();
+    // Optional: Expose for debugging in console
+    window.RelateWebGen = { state: runtime.state, runtime, render };
+  </script>
+</body>
+</html>
