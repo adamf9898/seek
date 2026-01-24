@@ -1,3 +1,10 @@
+---
+name: Create Daily Web App
+description: 
+---
+
+# Create Daily Web App
+
 name: Create Daily Web App
 
 on:
@@ -34,3 +41,5 @@ jobs:
           git add apps/
           git diff --staged --quiet || git commit -m "Add web app for $(date +%Y-%m-%d)"
           git push
+
+          
